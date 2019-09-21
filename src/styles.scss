@@ -1,1 +1,240 @@
 /* You can add global styles to this file, and also import other style files */
+.navbar {
+  position: relative;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.5rem 0.5rem;
+  background: #222;
+  color: #f2f2f2;
+}
+
+.searchbar {
+  margin-bottom: auto;
+  margin-top: auto;
+  height: 40px;
+  background-color: #353b48;
+  border-radius: 30px;
+  padding: 10px;
+  padding-bottom: 15px;
+}
+
+.search_input {
+  color: white;
+  border: 0;
+  outline: 0;
+  background: none;
+  width: 0;
+  caret-color: transparent;
+  line-height: 18px;
+  transition: width 0.4s linear;
+  font-size: 0.8em;
+}
+
+.searchbar:hover > .search_input {
+  padding: 0 10px;
+  width: 110px;
+  caret-color: red;
+  transition: width 0.4s linear;
+}
+
+.searchbar:hover > .search_icon {
+  background: white;
+  color: #e74c3c;
+  text-decoration: none;
+}
+
+.search_icon {
+  height: 24px;
+  width: 24px;
+  float: right;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  color: white;
+}
+.form-inline .container {
+  padding-left: 0;
+  padding-right: 0;
+}
+
+@media (min-width: 480px) {
+  .searchbar:hover > .search_input {
+    width: 200px;
+  }
+  .search_input {
+    line-height: 30px;
+    font-size: 1em;
+  }
+  .search_icon {
+    height: 30px;
+    width: 30px;
+  }
+  .searchbar {
+    height: 50px;
+  }
+}
+
+@media (min-width: 768px) {
+  .searchbar:hover > .search_input {
+    width: 200px;
+  }
+}
+
+.container.main {
+  //   text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding-top: 2em;
+  //   height: 60vh;
+}
+
+.planet-list {
+  padding-bottom: 1em;
+}
+.planet-list-container {
+}
+
+.planet-list-item {
+}
+
+body {
+  background: #262a2b !important;
+  font-family: "helvetica", san-serif;
+}
+.planet-list-container {
+  padding: 0;
+  margin: 50px auto;
+  list-style: none;
+  text-align: center;
+
+  //   background: #262a2b;
+}
+.planet-list-container div {
+  display: inline-block;
+  width: 20%;
+  min-width: 200px;
+  max-width: 230px;
+  padding: 80px 20px 40px;
+  position: relative;
+  vertical-align: top;
+  margin: 10px;
+  font-family: "helvetica", san-serif;
+  min-height: 25vh;
+  background: #262a2b;
+  border: 1px solid #252727;
+  text-align: left;
+}
+.planet-list-container div h2 {
+  font-size: 80px;
+  margin: 0;
+  position: absolute;
+  opacity: 0.2;
+  top: 0;
+  right: 10px;
+  transition: all 0.3s ease-in-out;
+  color: #b7b7b7;
+}
+.planet-list-container div h3 {
+  font-size: 20px;
+  font-weight: bold;
+  color: #b7b7b7;
+
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, 50%);
+}
+.planet-list-container div p {
+  font-size: 16px;
+  line-height: 18px;
+  color: #b7b7b7;
+  margin-top: 5px;
+}
+.planet-list-container div button {
+  background: transparent;
+  border: 1px solid #b7b7b7;
+  padding: 5px 10px;
+  color: #b7b7b7;
+  border-radius: 3px;
+  position: relative;
+  transition: all 0.3s ease-in-out;
+  transform: translateY(-80px);
+  opacity: 0;
+  cursor: pointer;
+  overflow: hidden;
+}
+.planet-list-container div button:before {
+  content: "";
+  position: absolute;
+  height: 100%;
+  width: 120%;
+  background: #b7b7b7;
+  top: 0;
+  opacity: 0;
+  left: -140px;
+  border-radius: 0 20px 20px 0;
+  z-index: -1;
+  transition: all 0.3s ease-in-out;
+}
+.planet-list-container div:hover button {
+  transform: translateY(80px);
+  opacity: 1;
+}
+.planet-list-container div button:hover {
+  color: #262a2b;
+}
+.planet-list-container div button:hover:before {
+  left: 0;
+  opacity: 1;
+}
+.planet-list-container div:hover h2 {
+  top: 0px;
+  opacity: 0.6;
+  color: #000;
+}
+
+.planet-list-container div:before {
+  content: "";
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  right: -2px;
+  bottom: -2px;
+  z-index: -1;
+  background: #fff;
+  transform: skew(2deg, 2deg);
+}
+.planet-list-container div:after {
+  content: "";
+  position: absolute;
+  width: 40%;
+  height: 100%;
+  left: 0;
+  top: 0;
+  background: rgba(255, 255, 255, 0.02);
+}
+// .planet-list-container div:nth-child(1):before {
+//   background: #c9ffbf;
+//   background: -webkit-linear-gradient(to right, #ffafbd, #c9ffbf);
+//   background: linear-gradient(to right, #ffafbd, #c9ffbf);
+// }
+// .planet-list-container div:nth-child(2):before {
+//   background: #f2709c;
+//   background: -webkit-linear-gradient(to right, #ff9472, #f2709c);
+//   background: linear-gradient(to right, #ff9472, #f2709c);
+// }
+.planet-list-container div:nth-child(n):before {
+  background: #c21500;
+  background: -webkit-linear-gradient(to right, #ffc500, #c21500);
+  background: linear-gradient(to right, #ffc500, #c21500);
+}
+// .planet-list-container divi:nth-child(2n):before {
+//   background: #fc354c;
+//   background: -webkit-linear-gradient(to right, #0abfbc, #fc354c);
+//   background: linear-gradient(to right, #0abfbc, #fc354c);
+// }

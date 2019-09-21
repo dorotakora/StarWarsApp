@@ -1,28 +1,93 @@
+<nav class="navbar">
+  <a class="navbar-brand">
+    <span> <i class="fa fa-globe"></i>Planet List </span></a
+  >
+  <form class="form-inline">
+    <div class="container justify-content-flex-end h-100 ">
+      <div class="d-flex justify-content-center h-100">
+        <div class="searchbar">
+          <input
+            class="search_input"
+            type="text"
+            name=""
+            placeholder="Search Planet"
+            (keyup)="filterPlanets($event)"
+            [value]="searchPhrase === undefined ? '' : searchPhrase"
+          />
+          <a href="#" class="search_icon"><i class="fas fa-search"></i></a>
+        </div>
+      </div>
+    </div>
+  </form>
+</nav>
+<div class="container main">
+  <!-- <input
+    placeholder="Search Planet By Name"
+    (keyup)="filterPlanets($event)"
+    [value]="searchPhrase === undefined ? '' : searchPhrase"
+    class="search-input"
+  /> -->
+
+  <div class="row col-12 m-0 planet-list">
+    <div
+      *ngFor="let planet of pageOfPlanets; let i = index"
+      class="col-12 col-sm-6 col-md-4 col-lg-3 p-2  planet-list-container "
+    >
+      <div (click)="showDetails(planet)" class="planet-list-item">
+        <h2>0{{ i + 1 }}</h2>
+        <h3>{{ planet.name }}</h3>
+        <!-- <p>Population: {{ planet.population }}</p> -->
+        <button>Read more</button>
+      </div>
+    </div>
+  </div>
+
+  <div *ngIf="planetList && planetList.length !== 0">
+    <jw-pagination
+      [items]="planetList"
+      (changePage)="onChangePage($event)"
+      [initialPage]="initialPage"
+      [pageSize]="pageSize"
+    ></jw-pagination>
+  </div>
+  <div>
+    <label>Items per page </label>
+    <select [(ngModel)]="pageSize" (change)="changePageSize($event)">
+      <option *ngFor="let option of pageSizeOptions" [value]="option">{{
+        option
+      }}</option>
+    </select>
+  </div>
+</div>
+
+<!-- 
+
+
 <input
-  placeholder="Search Planet By Name"
-  (keyup)="filterPlanets($event)"
-  [value]="searchPhrase === undefined ? '' : searchPhrase"
+placeholder="Search Planet By Name"
+(keyup)="filterPlanets($event)"
+[value]="searchPhrase === undefined ? '' : searchPhrase"
 />
 
 <div>
-  <div *ngFor="let planet of pageOfPlanets">
-    <div (click)="showDetails(planet)">
-      {{ planet.name }}, {{ planet.gravity }}
-    </div>
+<div *ngFor="let planet of pageOfPlanets">
+  <div (click)="showDetails(planet)">
+    {{ planet.name }}, {{ planet.gravity }}
   </div>
 </div>
+</div>
 <ng-container *ngIf="planetList && planetList.length !== 0">
-  <jw-pagination
-    [items]="planetList"
-    (changePage)="onChangePage($event)"
-    [initialPage]="initialPage"
-    [pageSize]="pageSize"
-  ></jw-pagination>
+<jw-pagination
+  [items]="planetList"
+  (changePage)="onChangePage($event)"
+  [initialPage]="initialPage"
+  [pageSize]="pageSize"
+></jw-pagination>
 </ng-container>
 <div>
-  <select [(ngModel)]="pageSize" (change)="changePageSize($event)">
-    <option *ngFor="let option of pageSizeOptions" [value]="option">{{
-      option
-    }}</option>
-  </select>
-</div>
+<select [(ngModel)]="pageSize" (change)="changePageSize($event)">
+  <option *ngFor="let option of pageSizeOptions" [value]="option">{{
+    option
+  }}</option>
+</select>
+</div> -->
