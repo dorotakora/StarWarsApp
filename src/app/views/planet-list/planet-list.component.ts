@@ -12,13 +12,13 @@ import { PaginationService } from "src/app/services/pagination.service";
 export class PlanetListComponent implements OnDestroy {
   // Variables
   private subscription = new Subscription();
-  public planetList;
+  public planetList: Array<any>;
   private filterSubscription: Subscription;
-  public searchPhrase;
+  public searchPhrase: string;
   public pageOfPlanets: Array<any>;
-  public initialPage;
-  public pageSize;
-  public pageSizeOptions = [3, 5, 10, 25, 100];
+  public initialPage: number;
+  public pageSize: number;
+  public pageSizeOptions = [5, 10, 25, 100];
 
   //
   constructor(
@@ -62,16 +62,17 @@ export class PlanetListComponent implements OnDestroy {
     this.pageOfPlanets = pageOfPlanets;
 
     if (document.querySelector(".page-item.number-item.active")) {
-      this.paginationService.initialPage = document.querySelector(
-        ".page-item.number-item.active"
-      ).textContent;
+      this.paginationService.initialPage = Number(
+        document.querySelector(".page-item.number-item.active").textContent
+      );
     }
   }
 
   // Change page size
   changePageSize(event: any) {
-    this.pageSize = event.target.value;
-    this.paginationService.pageSize = event.target.value;
+    console.log(typeof event.target.value);
+    this.pageSize = Number(event.target.value);
+    this.paginationService.pageSize = Number(event.target.value);
     this.planetList.length = 0;
     this.filterService.refreshPlanetList();
   }

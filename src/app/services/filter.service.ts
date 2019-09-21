@@ -6,10 +6,10 @@ import { Subject } from "rxjs";
 export class FilterService {
   constructor(private apiService: ApiService) {}
 
-  private planetList;
-  private filteredList;
+  private planetList: Array<any>;
+  private filteredList: Array<any>;
   public filterSubject = new Subject();
-  public searchPhrase;
+  public searchPhrase: string;
 
   // Prod
   // getPlanets() {
