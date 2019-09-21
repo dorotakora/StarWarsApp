@@ -7,9 +7,7 @@ export class FilterService {
   constructor(private apiService: ApiService) {}
 
   private planetList;
-  // public planetListSubject = new Subject();
   private filteredList;
-  // public filteredListSubject = new Subject();
   public filterSubject = new Subject();
   public searchPhrase;
 
@@ -213,14 +211,26 @@ export class FilterService {
       ]
     };
     this.planetList = this.filteredList = dataset.results;
-    this.filterSubject.next(JSON.stringify(this.filteredList));
-    console.log(JSON.stringify(this.filteredList));
+
+    if (this.searchPhrase) {
+      this.filterSubject.next(
+        JSON.stringify(
+          this.planetList.filter(
+            planet =>
+              planet.name
+                .toLowerCase()
+                .indexOf(this.searchPhrase.toLowerCase()) !== -1
+          )
+        )
+      );
+    } else {
+      this.filterSubject.next(JSON.stringify(this.filteredList));
+    }
   }
 
   //
   filterPlanets(event: any) {
     console.log(`FilterService filterPlanets()`);
-    // console.log(JSON.stringify(this.filteredList));
     this.filteredList = this.planetList.filter(
       planet =>
         planet.name.toLowerCase().indexOf(event.target.value.toLowerCase()) !==
@@ -233,8 +243,6 @@ export class FilterService {
   //
   refreshPlanetList() {
     console.log(`FilterService test()`);
-    // console.log(JSON.stringify(this.filteredList));
-    // this.filteredListSubject.next(this.filteredList);
     this.filterSubject.next(JSON.stringify(this.filteredList));
   }
 }

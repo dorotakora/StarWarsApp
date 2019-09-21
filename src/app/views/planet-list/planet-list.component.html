@@ -4,26 +4,6 @@
   [value]="searchPhrase === undefined ? '' : searchPhrase"
 />
 
-<!-- <div *ngFor="let planet of planetList">
-  <div (click)="showDetails(planet)">
-    <h2>{{ planet.name }}</h2>
-    <p>
-      {{ planet.gravity }}
-    </p>
-  </div>
-</div> -->
-
-<!-- <div *ngFor="let planet of planetList">
-  <div (click)="showDetails(planet)">
-    {{ planet.name }}, {{ planet.gravity }}
-  </div>
-</div>
-
-<div>------------------------------------------------------------</div> -->
-
-<!-- <div>
-  <div *ngFor="let item of pageOfItems">{{ item.name }}</div>
-</div> -->
 <div>
   <div *ngFor="let planet of pageOfPlanets">
     <div (click)="showDetails(planet)">

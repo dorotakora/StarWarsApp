@@ -9,18 +9,16 @@ import { PaginationService } from "src/app/services/pagination.service";
   selector: "app-planet-list",
   templateUrl: "./planet-list.component.html"
 })
-export class PlanetListComponent implements OnInit, OnDestroy {
+export class PlanetListComponent implements OnDestroy {
   // Variables
   private subscription = new Subscription();
   public planetList;
   private filterSubscription: Subscription;
   public searchPhrase;
   public pageOfPlanets: Array<any>;
-  // public initialPage = "1";
-  // public pageSize = "5";
   public initialPage;
   public pageSize;
-  public pageSizeOptions = [5, 10, 25, 100];
+  public pageSizeOptions = [3, 5, 10, 25, 100];
 
   //
   constructor(
@@ -30,13 +28,7 @@ export class PlanetListComponent implements OnInit, OnDestroy {
   ) {
     this.initialPage = this.paginationService.initialPage;
     this.pageSize = this.paginationService.pageSize;
-
-    // Subscribe to get list of all planets
-    // this.subscription.add(
-    //   (this.planetListSubscription = this.filterService.planetListSubject.subscribe(
-    //     data => (this.planetList = data)
-    //   ))
-    // );
+    this.searchPhrase = this.filterService.searchPhrase;
 
     // Subscribe to get list of filtered planets
     this.subscription.add(
@@ -46,11 +38,7 @@ export class PlanetListComponent implements OnInit, OnDestroy {
     );
 
     this.filterService.getPlanets();
-    this.searchPhrase = this.filterService.searchPhrase;
   }
-
-  //
-  ngOnInit() {}
 
   ngOnDestroy() {
     this.subscription.unsubscribe();
@@ -72,22 +60,13 @@ export class PlanetListComponent implements OnInit, OnDestroy {
   onChangePage(pageOfPlanets: Array<any>) {
     // update current page of items
     this.pageOfPlanets = pageOfPlanets;
-    // console.log(pageOfPlanets);
+
     if (document.querySelector(".page-item.number-item.active")) {
-      // console.log(
-      //   document.querySelector(".page-item.number-item.active").textContent
-      // );
       this.paginationService.initialPage = document.querySelector(
         ".page-item.number-item.active"
       ).textContent;
     }
   }
-
-  //
-  // test() {
-  //   this.planetList.length = 0;
-  //   this.filterService.test();
-  // }
 
   // Change page size
   changePageSize(event: any) {
