@@ -160,7 +160,7 @@ body {
   bottom: 10px;
   left: 10px;
   transition: all 0.3s ease-in-out;
-
+  z-index: 999;
   opacity: 0;
   cursor: pointer;
   overflow: hidden;
@@ -249,4 +249,23 @@ select option {
 
 .page-item.active .page-link {
   border-color: red !important;
+}
+
+.planet-details {
+  color: #b7b7b7;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  border: 1px solid red;
+}
+.planet-details-header {
+  display: flex;
+  // flex-direction: row;
+  border: 1px solid blue;
+}
+.planet-details-info div {
+  display: flex;
+  // flex-direction: row;
+  border: 1px solid green;
 }

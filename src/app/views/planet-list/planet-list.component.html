@@ -56,35 +56,3 @@
     </select>
   </div>
 </div>
-
-<!-- 
-
-
-<input
-placeholder="Search Planet By Name"
-(keyup)="filterPlanets($event)"
-[value]="searchPhrase === undefined ? '' : searchPhrase"
-/>
-
-<div>
-<div *ngFor="let planet of pageOfPlanets">
-  <div (click)="showDetails(planet)">
-    {{ planet.name }}, {{ planet.gravity }}
-  </div>
-</div>
-</div>
-<ng-container *ngIf="planetList && planetList.length !== 0">
-<jw-pagination
-  [items]="planetList"
-  (changePage)="onChangePage($event)"
-  [initialPage]="initialPage"
-  [pageSize]="pageSize"
-></jw-pagination>
-</ng-container>
-<div>
-<select [(ngModel)]="pageSize" (change)="changePageSize($event)">
-  <option *ngFor="let option of pageSizeOptions" [value]="option">{{
-    option
-  }}</option>
-</select>
-</div> -->
