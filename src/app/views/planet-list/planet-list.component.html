@@ -1,7 +1,8 @@
 <nav class="navbar">
-  <a class="navbar-brand">
-    <span> <i class="fa fa-globe"></i>Planet List </span></a
-  >
+  <div class="navbar-brand">
+    <span> <i class="fa fa-globe"></i> </span>
+    <span>Planet List</span>
+  </div>
   <form class="form-inline">
     <div class="container justify-content-flex-end h-100 ">
       <div class="d-flex justify-content-center h-100">
@@ -21,28 +22,24 @@
   </form>
 </nav>
 <div class="container main">
-  <!-- <input
-    placeholder="Search Planet By Name"
-    (keyup)="filterPlanets($event)"
-    [value]="searchPhrase === undefined ? '' : searchPhrase"
-    class="search-input"
-  /> -->
-
   <div class="row col-12 m-0 planet-list">
     <div
       *ngFor="let planet of pageOfPlanets; let i = index"
       class="col-12 col-sm-6 col-md-4 col-lg-3 p-2  planet-list-container "
     >
-      <div (click)="showDetails(planet)" class="planet-list-item">
-        <h2>0{{ i + 1 }}</h2>
+      <div class="planet-list-item">
+        <h2>{{ i + 1 }}</h2>
         <h3>{{ planet.name }}</h3>
-        <!-- <p>Population: {{ planet.population }}</p> -->
-        <button>Read more</button>
+
+        <button (click)="showDetails(planet)">Read more</button>
       </div>
     </div>
   </div>
 
-  <div *ngIf="planetList && planetList.length !== 0">
+  <div
+    *ngIf="planetList && planetList.length !== 0"
+    class="pagination  pagination-sm"
+  >
     <jw-pagination
       [items]="planetList"
       (changePage)="onChangePage($event)"
@@ -50,8 +47,8 @@
       [pageSize]="pageSize"
     ></jw-pagination>
   </div>
-  <div>
-    <label>Items per page </label>
+  <div class="items-per-page">
+    <div>Items per page</div>
     <select [(ngModel)]="pageSize" (change)="changePageSize($event)">
       <option *ngFor="let option of pageSizeOptions" [value]="option">{{
         option
