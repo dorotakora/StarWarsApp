@@ -1,4 +1,12 @@
 /* You can add global styles to this file, and also import other style files */
+
+body {
+  margin: 0 auto;
+  box-sizing: border-box;
+  background: #262a2b !important;
+  font-family: "helvetica", san-serif;
+}
+
 .navbar {
   position: relative;
   display: flex;
@@ -63,29 +71,6 @@
   padding-right: 0;
 }
 
-@media (min-width: 480px) {
-  .searchbar:hover > .search_input {
-    width: 200px;
-  }
-  .search_input {
-    line-height: 30px;
-    font-size: 1em;
-  }
-  .search_icon {
-    height: 30px;
-    width: 30px;
-  }
-  .searchbar {
-    height: 50px;
-  }
-}
-
-@media (min-width: 768px) {
-  .searchbar:hover > .search_input {
-    width: 200px;
-  }
-}
-
 .container.main {
   display: flex;
   flex-direction: column;
@@ -103,10 +88,6 @@
 .planet-list-item {
 }
 
-body {
-  background: #262a2b !important;
-  font-family: "helvetica", san-serif;
-}
 .planet-list-container {
   padding: 0;
   margin: 50px auto;
@@ -255,17 +236,81 @@ select option {
   color: #b7b7b7;
   display: flex;
   flex-direction: column;
-  justify-content: flex-start;
-  align-items: flex-start;
-  border: 1px solid red;
+  justify-content: center;
+  align-items: center;
+
+  padding: 1em;
+
+  width: 100%;
+  height: 100vh;
+  background-image: url("/assets/images/bck.jpeg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 .planet-details-header {
   display: flex;
-  // flex-direction: row;
-  border: 1px solid blue;
+  justify-content: center;
+
+  width: 100%;
+  padding-bottom: 2em;
+  div:first-of-type {
+    font-size: 2em;
+    font-weight: 900;
+  }
 }
 .planet-details-info div {
   display: flex;
-  // flex-direction: row;
-  border: 1px solid green;
+
+  div {
+    width: 100%;
+  }
+  div:first-of-type {
+    font-weight: 800;
+  }
+  div a {
+    text-decoration: none;
+    color: #b7b7b7;
+    cursor: pointer;
+  }
+}
+.back {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+}
+.far .fa-times-circle {
+  width: 10px;
+  height: 10px;
+}
+
+@media (min-width: 480px) {
+  .searchbar:hover > .search_input {
+    width: 200px;
+  }
+  .search_input {
+    line-height: 30px;
+    font-size: 1em;
+  }
+  .search_icon {
+    height: 30px;
+    width: 30px;
+  }
+  .searchbar {
+    height: 50px;
+  }
+}
+
+@media (min-width: 768px) {
+  .searchbar:hover > .search_input {
+    width: 200px;
+  }
+  .planet-details-header {
+    div:first-of-type {
+      font-size: 3em;
+    }
+  }
+  .planet-details-info {
+    font-size: 2em;
+  }
 }

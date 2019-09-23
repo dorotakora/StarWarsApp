@@ -1,68 +1,55 @@
-<p (click)="goBack()">Back</p>
 <div class="planet-details">
-  <!-- <p>{{ details.name }}</p>
-  <p>{{ details.rotation_period }}</p>
-  <p>{{ details.orbital_period }}</p>
-  <p>{{ details.diameter }}</p> -->
-  <!-- <p>{{ details.climate }}</p>
-  <p>{{ details.gravity }}</p>
-  <p>{{ details.terrain }}</p> -->
-  <!-- <p>{{ details.surface_water }}</p>
-  <p>{{ details.population }}</p>
-  <p>{{ details.residents }}</p> -->
-  <!-- <p>{{ details.films }}</p>
-  <p>{{ details.created }}</p>
-  <p>{{ details.edited }}</p>
-  <p>{{ details.url }}</p> -->
-</div>
-<div class="planet-details">
+  <div class="back">
+    <p (click)="goBack()">
+      <i class="far fa-times-circle fa-2x"></i>
+    </p>
+  </div>
   <div class="planet-details-header">
     <div scope="col">
       {{ details.name }}
     </div>
-    <div scope="col"><p (click)="goBack()">Back</p></div>
   </div>
 
   <div class="planet-details-info">
     <div>
-      <div scope="row">Rotation period</div>
+      <div>Rotation period</div>
       <div>{{ details.rotation_period }}</div>
     </div>
     <div>
-      <div scope="row">Orbital period</div>
+      <div>Orbital period</div>
       <div>{{ details.orbital_period }}</div>
     </div>
     <div>
-      <div scope="row">Diameter</div>
+      <div>Diameter</div>
       <div>{{ details.diameter }}</div>
     </div>
     <div>
-      <div scope="row">Climate</div>
+      <div>Climate</div>
       <div>{{ details.climate }}</div>
     </div>
     <div>
-      <div scope="row">Gravity</div>
+      <div>Gravity</div>
       <div>{{ details.gravity }}</div>
     </div>
     <div>
-      <div scope="row">Terrain</div>
+      <div>Terrain</div>
       <div>{{ details.terrain }}</div>
     </div>
     <div>
-      <div scope="row">Surface water</div>
+      <div>Surface water</div>
       <div>{{ details.surface_water }}</div>
     </div>
     <div>
-      <div scope="row">Population</div>
+      <div>Population</div>
       <div>{{ details.population }}</div>
     </div>
     <div>
-      <div scope="row">Residents</div>
-      <div>{{ details.residents }}</div>
+      <div>Residents</div>
+      <div><a href="{{ details.residents }}">Show more</a></div>
     </div>
     <div>
-      <div scope="row">Films</div>
-      <div>{{ details.films }}</div>
+      <div>Films</div>
+      <div><a href="{{ details.films }}">Show more</a></div>
     </div>
   </div>
 </div>
