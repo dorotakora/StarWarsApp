@@ -13,17 +13,20 @@ export class FilterService {
 
   // Prod
   getPlanets() {
-    this.apiService.getPlanets().subscribe(data => {
-      this.planetList = this.filteredList = [
-        ...data[0]["results"],
-        ...data[1]["results"],
-        ...data[2]["results"],
-        ...data[3]["results"],
-        ...data[4]["results"],
-        ...data[5]["results"],
-        ...data[6]["results"]
-      ];
-
+    if (!this.planetList) {
+      this.apiService.getPlanets().subscribe(data => {
+        this.planetList = this.filteredList = [
+          ...data[0]["results"],
+          ...data[1]["results"],
+          ...data[2]["results"],
+          ...data[3]["results"],
+          ...data[4]["results"],
+          ...data[5]["results"],
+          ...data[6]["results"]
+        ];
+        this.filterSubject.next(JSON.stringify(this.filteredList));
+      });
+    } else {
       if (this.searchPhrase) {
         this.filterSubject.next(
           JSON.stringify(
@@ -38,7 +41,7 @@ export class FilterService {
       } else {
         this.filterSubject.next(JSON.stringify(this.filteredList));
       }
-    });
+    }
   }
 
   //

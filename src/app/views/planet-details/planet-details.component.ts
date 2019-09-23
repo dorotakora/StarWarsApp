@@ -11,7 +11,6 @@ export class PlanetDetailsComponent {
   constructor(private router: Router, private activatedRoute: ActivatedRoute) {
     this.activatedRoute.queryParams.subscribe(params => {
       this.details = JSON.parse(params.planetdetails);
-      console.log(JSON.stringify(this.details));
     });
   }
 
